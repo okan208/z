@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kejutan Spesial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7e9e3;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden; /* Untuk mencegah scroll akibat efek love */
+        }
+        h1 {
+            color: #ff6347;
+        }
+        p {
+            font-size: 18px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #ff4500;
+        }
+        .message {
+            font-size: 20px;
+            margin-top: 30px;
+            color: #333;
+            display: none; /* Awalnya disembunyikan */
+        }
+        .love-note {
+            font-size: 36px;
+            color: #ff6347;
+            font-weight: bold;
+            margin-top: 50px;
+            display: none; /* Awalnya disembunyikan */
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(-45deg);
+            }
+            50% {
+                transform: translateY(-200px) rotate(-45deg);
+            }
+            100% {
+                transform: translateY(0) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Selamat Ulang Tahun!</h1>
+    <p>Semoga harimu penuh kebahagiaan dan keceriaan!</p>
+    <p><a href="#" id="surprise-link">Klik di sini untuk kejutan spesial</a></p>
+
+    <!-- Bagian Kejutan Spesial -->
+    <div id="kejutan" class="message">
+        <p>Hai sayang, selamat ulang tahun ya buat kamuu!</p>
+        <p>Semoga kamu panjang umur, sehat selalu, banyak rezeki nyaaa,</p>
+        <p>daan sayang terus sama akuuuu!</p>
+        <p>Semoga kitaa langgeng sampee kita tuaa nantii yaa sayangkuu cintakuuu.</p>
+    </div>
+    <div class="love-note" id="love-note">
+        I LOVE YOU SO MUCH MORE THAN EVERYTHING
+    </div>
+
+    <!-- Backsound Lagu Happy Birthday -->
+    <audio id="birthday-audio">
+        <source src="lagu.mp4" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Efek Love -->
+    <div id="hearts-container"></div>
+
+    <script>
+        // JavaScript untuk menampilkan pesan kejutan saat link diklik dan memutar musik
+        document.getElementById("surprise-link").onclick = function() {
+            document.getElementById("kejutan").style.display = "block";
+            document.getElementById("love-note").style.display = "block";
+            document.getElementById("birthday-audio").play();
+
+            // Menambahkan efek love
+            createHearts();
+            return false; // Mencegah tautan default untuk memuat ulang halaman
+        };
+
+        // Fungsi untuk membuat efek love
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+                container.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+</html>
